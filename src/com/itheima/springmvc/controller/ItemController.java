@@ -1,7 +1,6 @@
 package com.itheima.springmvc.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,9 +12,11 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -109,15 +110,28 @@ public class ItemController {
 	//修改
 	@RequestMapping(value="/updates.action", method={RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView updates(QueryVo vo) {
-		
-		
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("success");
 		return mav;
 	}
 	
+	//json数据交互
+	@RequestMapping(value="/json.action", method={RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public Items json(@RequestBody Items items) {
+		
+//		System.out.println(items);
+		return items;
+	}
 	
-	
+	//restFul风格的开发
+	@RequestMapping(value="/itemEdit/{id}.action")
+	public ModelAndView toEdit1(@PathVariable Integer id,HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
+		Items items = itemService.selectItemsById(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("item", items);
+		mav.setViewName("editItem");
+		return mav;
+	}
 	
 }

@@ -5,9 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改商品信息</title>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>修改商品信息</title>
 </head>
 <body> 
 	<!-- 上传图片是需要指定属性 enctype="multipart/form-data" -->
@@ -52,5 +51,45 @@
 
 	</form>
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//alert(1);
+	var params = '{"id":1, "name":"测试商品","price":99.9, "detail":"测试商品描述", "pic":"123456.jpg" }';
+	/* $.post(url,patams,function(data){
+		
+	},"json"); *///是回调字符串，不是发送字符串
+	$.ajax({
+		url : "${pageContext.request.contextPath}/json.action",
+		data : params,
+		contentType : "application/json;charset=utf-8",//发送数据的格式
+		type : "post",
+		dataType : "json",//回调
+		success : function(data){
+			alert(data.name);
+		}
+	})
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

@@ -42,5 +42,20 @@
     	<!-- 上传图片的大小   B   5M  1*1024*1024*5-->
     	<property name="maxUploadSize" value="5000000"/>
     </bean>
+    
+    <!-- SpringMVC拦截器 -->
+    <mvc:interceptors>
+    	<!-- 多个拦截器 -->
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<!-- 自定义的拦截器类 -->
+    		<bean class="com.itheima.springmvc.interceptor.Interceptor1"/>
+    	</mvc:interceptor>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<!-- 自定义的拦截器类 -->
+    		<bean class="com.itheima.springmvc.interceptor.Interceptor2"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 	
 </beans>
