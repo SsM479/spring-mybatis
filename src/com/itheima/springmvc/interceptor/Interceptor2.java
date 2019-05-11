@@ -12,7 +12,7 @@ public class Interceptor2 implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("方法前2");
-		return false;
+		return true;
 	}
 	
 	@Override

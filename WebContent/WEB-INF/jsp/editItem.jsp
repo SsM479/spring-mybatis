@@ -56,6 +56,7 @@
 $(function(){
 	//alert(1);
 	var params = '{"id":1, "name":"测试商品","price":99.9, "detail":"测试商品描述", "pic":"123456.jpg" }';
+	//var patams = "id=1&name=测试商品&price=99.9&detail=测试商品描述&pic=123456.jpg"; 
 	/* $.post(url,patams,function(data){
 		
 	},"json"); *///是回调字符串，不是发送字符串
